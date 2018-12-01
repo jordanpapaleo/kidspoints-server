@@ -4,13 +4,14 @@
   "description": "An ES6 node starter project",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node --harmony .",
-    "dev": "NODE_ENV=development ./node_modules/.bin/nodemon -x \"node --harmony\" .",
+    "start": "NODE_ENV=production node dist/server.js",
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist",
     "purge": "rm -rf node_modules package-lock.json; npm i",
     "pretest": "npm run test:lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "./node_modules/.bin/jest --verbose",
-    "test:lint": "./node_modules/.bin/eslint . --color",
+    "test:lint": "./node_modules/.bin/standard \"src/*\" --verbose | snazzy",
     "test:watch": "./node_modules/.bin/jest --watchAll --verbose"
   },
   "author": "Jordan Papaleo",
@@ -19,40 +20,39 @@
     "node": "10.13.0",
     "npm": "6.4.1"
   },
-  "jest": {
-    "transform": {
-      ".*": "<rootDir>/node_modules/babel-jest"
-    },
-    "collectCoverage": true
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "ignore": [],
+    "globals": []
   },
   "dependencies": {
-    "babel-core": "6.25.0",
-    "babel-eslint": "7.2.3",
-    "babel-jest": "15.0.0",
-    "babel-plugin-syntax-async-functions": "6.13.0",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-decorators-legacy": "1.3.4",
-    "babel-plugin-transform-regenerator": "6.24.1",
-    "babel-polyfill": "6.23.0",
-    "babel-preset-stage-1": "6.24.1",
-    "babel-register": "6.14.0",
-    "body-parser": "1.15.2",
-    "chance": "^1.0.17",
+    "@babel/cli": "7.1.5",
+    "@babel/core": "7.1.6",
+    "@babel/node": "7.0.0",
+    "@babel/preset-env": "7.1.6",
+    "babel-polyfill": "6.26.0",
+    "body-parser": "1.18.3",
+    "chance": "1.0.17",
     "cookie-parser": "1.4.3",
-    "cors": "^2.8.4",
-    "express": "4.14.0",
-    "morgan": "1.7.0",
-    "node-fetch": "1.6.3"
+    "cors": "2.8.4",
+    "express": "4.16.4",
+    "lodash": "4.17.11",
+    "morgan": "1.9.1",
+    "snazzy": "8.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-jest": "16.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "eslint": "3.5.0",
-    "eslint-config-standard": "6.0.0",
-    "jest": "18.1.0",
-    "jest-cli": "18.1.0",
-    "nodemon": "^1.12.1",
+    "babel-eslint": "10.0.1",
+    "eslint-plugin-flowtype": "3.2.0",
+    "flow-bin": "0.85.0",
+    "nodemon": "1.18.7",
     "standard": "8.6.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
