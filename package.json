@@ -6,18 +6,18 @@
   "scripts": {
     "start": "NODE_ENV=production node --harmony .",
     "dev": "NODE_ENV=development ./node_modules/.bin/nodemon -x \"node --harmony\" .",
-    "purge": "rm -rf node_modules; rm -rf bin; npm cache clean; npm i",
+    "purge": "rm -rf node_modules package-lock.json; npm i",
     "pretest": "npm run test:lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "./node_modules/.bin/jest --verbose",
     "test:lint": "./node_modules/.bin/eslint . --color",
     "test:watch": "./node_modules/.bin/jest --watchAll --verbose"
   },
-  "author": "Clear Capital",
+  "author": "Jordan Papaleo",
   "license": "UNLICENSED",
   "engines": {
-    "node": "6.3.1",
-    "npm": "3.10.7"
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "jest": {
     "transform": {
@@ -37,9 +37,9 @@
     "babel-preset-stage-1": "6.24.1",
     "babel-register": "6.14.0",
     "body-parser": "1.15.2",
+    "chance": "^1.0.17",
     "cookie-parser": "1.4.3",
     "cors": "^2.8.4",
-    "ejs": "2.5.2",
     "express": "4.14.0",
     "morgan": "1.7.0",
     "node-fetch": "1.6.3"

@@ -5,12 +5,10 @@ import cors from 'cors'
 import http from 'http'
 import morgan from 'morgan'
 import {getLocal} from './services/localDbUtils'
+import generateMockData from './data/mock-data'
 
 const app = express()
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
-// app.use((req, res, next) => {
-//
-// })
 
 const server = http.createServer(app)
 module.exports = server
@@ -27,36 +25,17 @@ app.use(morgan('dev'))
 //   next()
 // })
 
+app.get('/mock-data', async (req, res, next) => {
+  const mockData = await generateMockData()
+  res
+      .status(200)
+      .json(mockData)
+})
+
 app.get('/test', (req, res, next) => {
   res
     .status(200)
     .send('Success Connection')
-})
-
-app.get('/kids', async (req, res, next) => {
-  try {
-    const data = await getLocal()
-    console.log(data)
-    res
-      .send(data.kids)
-  } catch (err) {
-    res
-      .status(500)
-      .send(err)
-  }
-})
-
-app.get('/transactions', async (req, res, next) => {
-  try {
-    const data = await getLocal()
-    console.log(data)
-    res
-      .send(data.transactions)
-  } catch (err) {
-    res
-      .status(500)
-      .send(err)
-  }
 })
 
 app.get('*', (req, res) => {

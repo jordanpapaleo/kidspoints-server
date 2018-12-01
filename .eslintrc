@@ -27,7 +27,7 @@
     "xit": true,
     "expect": true,
     "beforeEach": true,
-    "afterEach": true,
+    "afterEach": true
   },
   "rules": {}
 }
