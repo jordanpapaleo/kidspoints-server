@@ -20,13 +20,20 @@
     "node": "10.13.0",
     "npm": "6.4.1"
   },
+  "eslintConfig": {
+    "extends": "standard"
+  },
   "standard": {
     "parser": "babel-eslint",
     "plugins": [
       "flowtype"
     ],
     "ignore": [],
-    "globals": []
+    "globals": [],
+    "rules": {
+      "array-bracket-spacing": ["warn", "never"],
+      "object-curly-spacing": ["warn", "always"]
+    }
   },
   "dependencies": {
     "@babel/cli": "7.1.5",
@@ -45,7 +52,13 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.1",
+    "eslint": "5.9.0",
+    "eslint-config-standard": "12.0.0",
     "eslint-plugin-flowtype": "3.2.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
     "flow-bin": "0.85.0",
     "nodemon": "1.18.7",
     "standard": "8.6.0"

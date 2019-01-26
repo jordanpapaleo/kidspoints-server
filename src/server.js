@@ -28,8 +28,8 @@ app.use(morgan('dev'))
 app.get('/mock-data', async (req, res, next) => {
   const mockData = await generateMockData()
   res
-      .status(200)
-      .json(mockData)
+    .status(200)
+    .json(mockData)
 })
 
 app.get('/test', (req, res, next) => {
