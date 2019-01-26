@@ -1,11 +1,10 @@
-import 'babel-polyfill'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import morgan from 'morgan'
-import generateMockData from './data/mock-data'
+import generateMockData from 'data/mock-data'
 
 const app = express()
 app.use(cors({

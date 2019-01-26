@@ -1,7 +1,7 @@
-import Family from '../models/Family'
-import Member from '../models/Member'
-import Registry from '../models/Registry'
-import Transaction from '../models/Transaction'
+import Family from 'models/Family'
+import Member from 'models/Member'
+import Registry from 'models/Registry'
+import Transaction from 'models/Transaction'
 
 import Chance from 'chance'
 const chance = new Chance()
@@ -35,11 +35,12 @@ function makeFamily (memberId) {
 }
 
 function makeRegistry () {
+  const transactions = new Array(10)
+    .fill('')
+    .map(() => makeTransaction())
   return new Registry({
-    balance: 1000,
-    transactions: new Array(10)
-      .fill('')
-      .map(() => makeTransaction())
+    balance: transactions.reduce((balance, transaction) => (balance + transaction.amount), 0),
+    transactions
   })
 }
 
